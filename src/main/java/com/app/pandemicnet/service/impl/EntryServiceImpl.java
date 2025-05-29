@@ -50,4 +50,18 @@ public class EntryServiceImpl implements EntryService {
     public List<User> findAtRiskUsers(Long dataCentreId, LocalDateTime startTime, LocalDateTime endTime, Long excludeUserId) {
         return entryRepository.findAtRiskUsers(dataCentreId, startTime, endTime, excludeUserId);
     }
+
+    public List<Entry> findEntriesByUserAndTimeRange(Long userId,LocalDateTime startTime,LocalDateTime endTime){
+        return entryRepository.findEntriesByUserIdAndTimestampBetween(userId,startTime,endTime);
+
+    }
+
+    public List<Entry> findByUserId(Long userId){
+        return entryRepository.findEntriesByUserId(userId);
+    }
+
+    public void deleteEntry(Long id)
+    {
+      entryRepository.deleteById(id);
+    }
 }

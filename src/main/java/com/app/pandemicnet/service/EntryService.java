@@ -11,4 +11,9 @@ public interface EntryService {
     Entry createEntry(UUID userUniqueId, UUID dataCentreUniqueId);
     List<Entry> findEntriesByUserAndTime(Long userId, LocalDateTime startTime);
     List<User> findAtRiskUsers(Long dataCentreId, LocalDateTime startTime, LocalDateTime endTime, Long excludeUserId);
+    List<Entry> findEntriesByUserAndTimeRange(Long userId,LocalDateTime startTime,LocalDateTime endTime);
+
+    List<Entry> findByUserId(Long userId);
+
+    void deleteEntry(Long id);
 }

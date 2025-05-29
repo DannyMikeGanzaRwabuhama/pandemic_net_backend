@@ -1,5 +1,6 @@
 package com.app.pandemicnet.service.impl;
 
+import com.app.pandemicnet.Exception.ResourceNotFoundException;
 import com.app.pandemicnet.model.Notification;
 import com.app.pandemicnet.model.User;
 import com.app.pandemicnet.repository.NotificationRepository;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String loginUser(String phoneNumber, String password) {
         User user = userRepository.findByPhoneNumber(phoneNumber)
-                .orElseThrow(() -> new RuntimeException("User not found by phone number"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found by phone number"));
         if (user == null || !passwordEncoder.matches(password, user.getPasswordHash())) {
             throw new RuntimeException("Invalid credentials");
         }
@@ -49,13 +50,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found by id"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found by id"));
     }
 
     @Override
     public User getUserByUniqueId(UUID uniqueId) {
         return userRepository.findByUniqueId(uniqueId)
-                .orElseThrow(() -> new RuntimeException("User not found by unique id"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found by unique id"));
     }
 
     @Override
