@@ -1,7 +1,7 @@
 package com.app.pandemicnet.repository;
 
-import com.app.pandemicnet.model.*;
-
+import com.app.pandemicnet.model.Entry;
+import com.app.pandemicnet.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,8 +17,4 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     @Query("SELECT DISTINCT e.user FROM Entry e WHERE e.dataCentre.id = :dataCentreId " +
             "AND e.timestamp BETWEEN :startTime AND :endTime AND e.user.id != :excludeUserId")
     List<User> findAtRiskUsers(Long dataCentreId, LocalDateTime startTime, LocalDateTime endTime, Long excludeUserId);
-
-
-
-
 }
