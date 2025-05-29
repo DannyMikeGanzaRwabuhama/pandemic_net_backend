@@ -1,9 +1,7 @@
 package com.app.pandemicnet.service;
 
 import com.app.pandemicnet.model.*;
-
 import com.app.pandemicnet.repository.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +24,8 @@ public class EntryService {
 
     @Transactional
     public Entry createEntry(UUID userUniqueId, UUID dataCentreUniqueId) {
-        User user = userRepository.findUserByUniqueId(userUniqueId);
+        User user = userRepository.findUserByUniqueId(userUniqueId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
         DataCentre dataCentre = dataCentreRepository.findDataCentreByUniqueId(dataCentreUniqueId);
 
         if (user == null || dataCentre == null) {
