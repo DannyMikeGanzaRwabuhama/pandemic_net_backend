@@ -4,7 +4,7 @@ package com.app.pandemicnet.controller;
 
 import com.app.pandemicnet.dto.EntryRequest;
 import com.app.pandemicnet.model.*;
-import com.app.pandemicnet.service.*;
+import com.app.pandemicnet.service.impl.EntryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class EntryController {
 
     @Autowired
-    private EntryService entryService;
+    private EntryServiceImpl entryService;
 
     @PostMapping
 //    @PreAuthorize("hasRole('SCANNER') or hasRole('ADMIN')")

@@ -2,7 +2,7 @@ package com.app.pandemicnet.dto;
 
 import java.util.UUID;
 
-class EntryRequest {
+public class EntryRequest {
     private UUID userUniqueId;
     private UUID dataCentreUniqueId;
 
