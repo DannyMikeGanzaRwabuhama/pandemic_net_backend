@@ -1,4 +1,4 @@
-package com.app.pandemicnet.dtos;
+package com.app.pandemicnet.dto;
 
 import lombok.Data;
 

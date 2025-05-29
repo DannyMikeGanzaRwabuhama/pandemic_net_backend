@@ -1,8 +1,7 @@
 package com.app.pandemicnet.service;
 
-import com.app.pandemicnet.dtos.DataCentreRequest;
-import com.app.pandemicnet.dtos.DataCentreResponse;
-import com.app.pandemicnet.model.DataCentre;
+import com.app.pandemicnet.dto.DataCentreRequest;
+import com.app.pandemicnet.dto.DataCentreResponse;
 
 import java.util.List;
 import java.util.UUID;
