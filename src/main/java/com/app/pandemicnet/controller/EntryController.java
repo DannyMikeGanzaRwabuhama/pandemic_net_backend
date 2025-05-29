@@ -2,14 +2,12 @@ package com.app.pandemicnet.controller;
 
 
 
+import com.app.pandemicnet.dto.EntryRequest;
 import com.app.pandemicnet.model.*;
 import com.app.pandemicnet.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/entries")
