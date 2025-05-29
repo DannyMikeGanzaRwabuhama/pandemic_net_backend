@@ -1,7 +1,7 @@
 package com.app.pandemicnet.controller;
 
-import com.app.pandemicnet.dtos.DataCentreRequest;
-import com.app.pandemicnet.dtos.DataCentreResponse;
+import com.app.pandemicnet.dto.DataCentreRequest;
+import com.app.pandemicnet.dto.DataCentreResponse;
 import com.app.pandemicnet.service.DataCentreService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

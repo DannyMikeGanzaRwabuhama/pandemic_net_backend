@@ -2,12 +2,12 @@ package com.app.pandemicnet.service.impl;
 
 
 import com.app.pandemicnet.Exception.ResourceNotFoundException;
-import com.app.pandemicnet.dtos.DataCentreRequest;
-import com.app.pandemicnet.dtos.DataCentreResponse;
+import com.app.pandemicnet.dto.DataCentreRequest;
+import com.app.pandemicnet.dto.DataCentreResponse;
 import com.app.pandemicnet.model.DataCentre;
 import com.app.pandemicnet.repository.DataCentreRepository;
 import com.app.pandemicnet.service.DataCentreService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +16,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class DataCentreServiceImpl implements DataCentreService {
 
-    @Autowired
     private DataCentreRepository dataCentreRepository;
 
     @Transactional
