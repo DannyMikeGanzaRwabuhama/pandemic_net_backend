@@ -2,6 +2,7 @@ package com.app.pandemicnet.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -31,7 +32,8 @@ public class User {
     private Status status = Status.HEALTHY;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     public enum Status {
         HEALTHY, AT_RISK, INFECTED
