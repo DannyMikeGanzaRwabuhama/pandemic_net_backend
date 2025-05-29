@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(String phoneNumber, String password) {
-        if (userRepository.findByPhoneNumber(phoneNumber) != null) {
+        if (userRepository.findByPhoneNumber(phoneNumber).isPresent()) {
             throw new RuntimeException("Phone number already exists");
         }
         User user = new User();
