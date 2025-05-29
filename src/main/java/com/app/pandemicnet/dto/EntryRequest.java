@@ -1,4 +1,4 @@
-package com.app.pandemicnet.controller;
+package com.app.pandemicnet.dto;
 
 import java.util.UUID;
 
