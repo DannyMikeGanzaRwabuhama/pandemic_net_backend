@@ -8,11 +8,19 @@
 		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+<<<<<<< HEAD
 	<groupId>com.app</groupId>
 	<artifactId>pandemicnet</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pandemicnet</name>
 	<description>A contact tracing app</description>
+=======
+	<groupId>com.hackathon</groupId>
+	<artifactId>PandemicNet</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>PandemicNet</name>
+	<description>Demo project for Spring Boot</description>
+>>>>>>> b01f80978e572bab3b19ec1cac6d80f473f913d5
 	<url/>
 	<licenses>
 		<license/>
@@ -47,6 +55,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 			<version>6.4.5</version>
@@ -75,6 +84,14 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+=======
+			<groupId>me.paulschwarz</groupId>
+			<artifactId>spring-dotenv</artifactId>
+
+		</dependency>
+
+		<dependency>
+>>>>>>> b01f80978e572bab3b19ec1cac6d80f473f913d5
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -94,11 +111,14 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
 			<version>3.4.3</version>
 		</dependency>
+=======
+>>>>>>> b01f80978e572bab3b19ec1cac6d80f473f913d5
 	</dependencies>
 
 	<build>
