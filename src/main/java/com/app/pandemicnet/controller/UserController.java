@@ -29,7 +29,8 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "User registered successfully")
     @PostMapping("/register")
     public ResponseEntity<User> register(@Valid @RequestBody RegisterRequest request) {
-        User user = userService.registerUser(request.getPhoneNumber(), request.getPassword());
+        String role = (request.getRole() == null || request.getRole().isBlank()) ? "USER" : request.getRole();
+        User user = userService.registerUser(request.getPhoneNumber(), request.getPassword(), role);
         return ResponseEntity.ok(user);
     }
 
