@@ -42,11 +42,12 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     List<Entry> findPotentialContacts(Long dataLocationId, LocalDateTime startTime, LocalDateTime endTime, Long excludeUserId);
     
     // Find connected users (users who were at the same location within 15 minutes)
-    @Query("SELECT DISTINCT e2.user FROM Entry e1 JOIN Entry e2 " +
+    @Query(value = "SELECT DISTINCT e2.user FROM Entry e1 JOIN Entry e2 " +
            "WHERE e1.dataLocation.id = e2.dataLocation.id " +
            "AND e1.user.id = :userId " +
            "AND e2.user.id != :userId " +
-           "AND ABS(TIMESTAMPDIFF(MINUTE, e1.timestamp, e2.timestamp)) <= 15")
+           "AND ABS(TIMESTAMPDIFF(MINUTE, e1.timestamp, e2.timestamp)) <= 15",
+            nativeQuery = true)
     List<User> findConnectedUsers(Long userId);
     
     // Find entry by ID
