@@ -1,66 +1,41 @@
 package com.app.pandemicnet.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "entries")
 @Data
+@Getter
+@Setter
 public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "data_centre_id", nullable = false)
-    private DataCentre dataCentre;
+    // Explicit getters and setters for fields that might be accessed frequently
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "data_location_id", nullable = false)
+    private DataLocation dataLocation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(nullable = false)
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime timestamp;
+
+    @Column
+    private Double temperature;
 
     @PrePersist
-    public void prePersist() {
+    protected void onCreate() {
         if (timestamp == null) {
             timestamp = LocalDateTime.now();
         }
-    }
-
-    public DataCentre getDataCentre() {
-        return dataCentre;
-    }
-
-    public void setDataCentre(DataCentre dataCentre) {
-        this.dataCentre = dataCentre;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
     }
 }
