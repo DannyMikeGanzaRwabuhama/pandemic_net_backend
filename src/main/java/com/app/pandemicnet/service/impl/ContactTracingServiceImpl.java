@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,15 +33,15 @@ public class ContactTracingServiceImpl implements ContactTracingService {
         if (newStatus == User.Status.INFECTED) {
             // Find entries for the infected user in the last 14 days
             LocalDateTime startTime = LocalDateTime.now().minusDays(14);
-            List<Entry> infectedEntries = entryRepository.findByUserIdAndTimeRange(userId, startTime);
+            List<Entry> infectedEntries = entryRepository.findByUserIdAndTimestampAfter(userId, startTime);
 
             // Identify at-risk users
             for (Entry entry : infectedEntries) {
                 LocalDateTime entryTime = entry.getTimestamp();
                 List<User> atRiskUsers = entryRepository.findAtRiskUsers(
-                        entry.getDataCentre().getId(),
-                        entryTime.minusHours(2),
-                        entryTime.plusHours(2),
+                        entry.getDataLocation().getId(),
+                        entryTime.minusMinutes(15),
+                        entryTime.plusMinutes(15),
                         userId
                 );
 
@@ -55,7 +54,7 @@ public class ContactTracingServiceImpl implements ContactTracingService {
                     notification.setUser(atRiskUser);
                     notification.setStatus(User.Status.AT_RISK);
                     notification.setMessage("You may have been exposed to an infected individual at " +
-                            entry.getDataCentre().getName());
+                            entry.getDataLocation().getName());
                     notificationRepository.save(notification);
                 }
             }

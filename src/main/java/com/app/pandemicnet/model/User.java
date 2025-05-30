@@ -1,7 +1,6 @@
 package com.app.pandemicnet.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,16 +25,6 @@ public class User implements UserDetails {
 
     @Column(name = "unique_id", nullable = false, unique = true)
     private UUID uniqueId = UUID.randomUUID();
-
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-
-    @Email
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
