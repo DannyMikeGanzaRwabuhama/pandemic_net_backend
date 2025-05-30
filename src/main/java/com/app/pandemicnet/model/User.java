@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "unique_id", nullable = false, unique = true)
-    private UUID uniqueId = UUID.randomUUID();
+    private UUID uniqueId ;
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
@@ -45,20 +46,23 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
     }
-
     @Override
     public String getPassword() {
-        return "";
+        return passwordHash;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return getPhoneNumber();
     }
 
     public enum Status {
         HEALTHY, AT_RISK, INFECTED
+    }
+
+    public User(){
+        this.uniqueId = UUID.randomUUID();
     }
 }

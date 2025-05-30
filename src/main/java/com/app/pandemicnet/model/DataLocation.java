@@ -31,5 +31,4 @@ public class DataLocation {
     @Embedded
     private Address address;
 
-
 }

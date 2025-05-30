@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserService {
-    User registerUser(String phoneNumber, String password);
+    User registerUser(String phoneNumber, String password, String role);
     String loginUser(String phoneNumber, String password);
     User getUserById(Long id);
     User getUserByUniqueId(UUID uniqueId);
